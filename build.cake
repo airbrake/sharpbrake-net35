@@ -291,7 +291,7 @@ private static bool IsBuildTagged(BuildSystem buildSystem)
 }
 
 /// <summary>
-/// Get's version from AssemblyVersion attribute.
+/// Gets version from AssemblyVersion attribute.
 /// </summary>
 private static string GetVersion(string csproj)
 {

@@ -1,0 +1,32 @@
+environment:
+  CONFIGURATION: Release
+  TARGET: Default
+
+  NUGET_SERVER_URL: https://www.nuget.org/api/v2/package
+  NUGET_SYMBOL_SERVER_URL: https://nuget.smbsrc.net/api/v2/package
+  NUGET_API_KEY:
+    secure: m90rhPQ6APme1AAJK4kmjuprD5znnDIyLzQ0ez4CQNLIuQiAsOn4dc1USB3I3kE0
+
+  MYGET_SERVER_URL: https://www.myget.org/F/sharpbrake/api/v2
+  MYGET_SYMBOL_SERVER_URL: https://www.myget.org/F/sharpbrake/symbols/api/v2/package
+  MYGET_API_KEY:
+    secure: /A9mXORoeN6GMmx8yyygIO/r5Jgx91h8Rzw/udcXPzUj/CmBI0Te+nagcL2RGcjR
+
+  CODECOV_TOKEN:
+    secure: mX4vQArZVD2qNm/nRuWYgN+Y+hxAbJeDb0uN2cr68rooFfCAH8rIL2mFCy8Z/QG1
+
+init:
+  - git config --global core.autocrlf true
+
+build_script:
+  - ps: .\build.ps1 -target $env:TARGET -configuration $env:CONFIGURATION
+
+# tests are run by build script
+test: off
+
+branches:
+  only:
+    - master
+
+cache:
+- tools -> build.cake
