@@ -1,6 +1,9 @@
 Sharpbrake
 ==========
 
+[![Build status](https://ci.appveyor.com/api/projects/status/grgn6029mub94h9o/branch/master?svg=true)](https://ci.appveyor.com/project/airbrake/sharpbrake-net35/branch/master)
+[![Coverage](https://codecov.io/gh/airbrake/sharpbrake-net35/branch/master/graph/badge.svg)](https://codecov.io/gh/airbrake/sharpbrake-net35)
+
 ![The Sharpbrake notifier for C#/.NET](https://s3.amazonaws.com/airbrake-github-assets/sharpbrake/arthur-sharpbrake.jpeg)
 
 Introduction
@@ -51,11 +54,15 @@ Installation
 
 Package                    | Description                                            | NuGet link
 ---------------------------|--------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------
-Sharpbrake.Client          | C# client with support for .NET 3.5 and 4.5            | 
-Sharpbrake.Http.Module     | HTTP module for ASP.NET request pipeline               | 
+Sharpbrake.Client          | C# client with support for .NET 3.5 and 4.5            | [![NuGet](https://img.shields.io/badge/nuget-3.2.0-blue.svg)](https://www.nuget.org/packages/Sharpbrake.Client/3.2.0)
+Sharpbrake.Http.Module     | HTTP module for ASP.NET request pipeline               | [![NuGet](https://img.shields.io/badge/nuget-1.2.0-blue.svg)](https://www.nuget.org/packages/Sharpbrake.Http.Module/1.2.0)
 
 ```
 PM> Install-Package Sharpbrake.Client -Version 3.2.0
+```
+
+```
+PM> Install-Package Sharpbrake.Http.Module -Version 1.2.0
 ```
 
 Examples
@@ -63,18 +70,18 @@ Examples
 
 ### Basic example
 
-This is the minimal example that you can use to test Sharpbrake with your
-project.
+This is the minimal example that you can use to test Sharpbrake notifier:
 
 ```csharp
 using System;
+using System.Threading;
 using Sharpbrake.Client;
 
-namespace ConsoleApplication
+namespace ConsoleApp
 {
-    public class Program
+    class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
             var airbrake = new AirbrakeNotifier(new AirbrakeConfig
             {
@@ -84,15 +91,42 @@ namespace ConsoleApplication
 
             try
             {
-                throw new Exception("Oops!"));
+                throw new Exception("Oops!");
             }
             catch (Exception ex)
             {
-                var response = airbrake.NotifyAsync(ex).Result;
-                Console.WriteLine("Status: {0}, Id: {1}, Url: {2}", response.Status, response.Id, response.Url);
+                airbrake.Notify(ex);
+                // sleep for 1 sec so child thread is not killed after the Main function exits;
+                // you don't need to do that in the real app if after exception the main app thread is still alive
+                Thread.Sleep(1000);
             }
         }
     }
+}
+```
+
+Subscribe to the `NotifyCompleted` event if you would like to handle a response from Airbrake:
+
+```csharp
+var airbrake = new AirbrakeNotifier(new AirbrakeConfig
+{
+    ProjectId = "113743",
+    ProjectKey = "81bbff95d52f8856c770bb39e827f3f6"
+});
+
+airbrake.NotifyCompleted += (sender, eventArgs) =>
+{
+    var response = eventArgs.Result;
+    Console.WriteLine("Status: {0}, Id: {1}, Url: {2}", response.Status, response.Id, response.Url);
+};
+
+try
+{
+    throw new Exception("Oops!");
+}
+catch (Exception ex)
+{
+    airbrake.NotifyAsync(ex);
 }
 ```
 
