@@ -3,6 +3,10 @@ Sharpbrake Changelog
 
 ### master
 
+### [v3.2.0][v3.2.0] (July 3, 2017)
+
+* Sharpbrake for .NET 3.5 and 4.5 has been moved to its own repo
+
 ### [v3.1.1][v3.1.1] (May 22, 2017)
 
 * Fixed ignored severity in the `Notify` method for .NET 3.5
@@ -40,3 +44,4 @@ Sharpbrake Changelog
 [v3.0.3]: https://github.com/airbrake/sharpbrake/releases/tag/v3.0.3
 [v3.1.0]: https://github.com/airbrake/sharpbrake/releases/tag/v3.1.0
 [v3.1.1]: https://github.com/airbrake/sharpbrake/releases/tag/v3.1.1
+[v3.2.0]: https://github.com/airbrake/sharpbrake-net35/releases/tag/v3.2.0
