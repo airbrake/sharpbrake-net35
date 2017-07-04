@@ -3,6 +3,11 @@ Sharpbrake Changelog
 
 ### master
 
+### [v3.2.1][v3.2.1] (July 4, 2017)
+
+* Fixed version and url in the notifier info
+  ([#1](https://github.com/airbrake/sharpbrake-net35/pull/1))
+
 ### [v3.2.0][v3.2.0] (July 3, 2017)
 
 * Sharpbrake for .NET 3.5 and 4.5 has been moved to its own repo
@@ -45,3 +50,4 @@ Sharpbrake Changelog
 [v3.1.0]: https://github.com/airbrake/sharpbrake/releases/tag/v3.1.0
 [v3.1.1]: https://github.com/airbrake/sharpbrake/releases/tag/v3.1.1
 [v3.2.0]: https://github.com/airbrake/sharpbrake-net35/releases/tag/v3.2.0
+[v3.2.1]: https://github.com/airbrake/sharpbrake-net35/releases/tag/v3.2.1

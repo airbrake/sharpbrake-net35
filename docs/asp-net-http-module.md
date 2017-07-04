@@ -14,7 +14,7 @@ After completing you should have a sample ASP.NET MVC application. We are going 
 2. Install the `Sharpbrake.Http.Module` package using `Package Manager Console` (View -> Other Windows -> Package Manager Console):
 
    ```powershell
-   PM> Install-Package Sharpbrake.Http.Module
+   PM> Install-Package Sharpbrake.Http.Module -Version 1.2.1
    ```
 
 3. Go to the project's `Web.config` and add your ProjectId and ProjectKey to the `appSettings` section:
