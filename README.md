@@ -435,7 +435,7 @@ ASP.NET Integration
    Manager Console" from Visual Studio):
 
   ```
-  PM> Install-Package Sharpbrake.Http.Module -Version 3.2.0
+  PM> Install-Package Sharpbrake.Http.Module -Version 1.2.1
   ```
 
 2. Configure `appSettings` in `Web.config` ([how to configure](#configuration)):
