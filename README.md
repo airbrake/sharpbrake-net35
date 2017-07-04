@@ -54,15 +54,15 @@ Installation
 
 Package                    | Description                                            | NuGet link
 ---------------------------|--------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------
-Sharpbrake.Client          | C# client with support for .NET 3.5 and 4.5            | [![NuGet](https://img.shields.io/badge/nuget-3.2.0-blue.svg)](https://www.nuget.org/packages/Sharpbrake.Client/3.2.0)
-Sharpbrake.Http.Module     | HTTP module for ASP.NET request pipeline               | [![NuGet](https://img.shields.io/badge/nuget-1.2.0-blue.svg)](https://www.nuget.org/packages/Sharpbrake.Http.Module/1.2.0)
+Sharpbrake.Client          | C# client with support for .NET 3.5 and 4.5            | [![NuGet](https://img.shields.io/badge/nuget-3.2.1-blue.svg)](https://www.nuget.org/packages/Sharpbrake.Client/3.2.1)
+Sharpbrake.Http.Module     | HTTP module for ASP.NET request pipeline               | [![NuGet](https://img.shields.io/badge/nuget-1.2.1-blue.svg)](https://www.nuget.org/packages/Sharpbrake.Http.Module/1.2.1)
 
 ```
-PM> Install-Package Sharpbrake.Client -Version 3.2.0
+PM> Install-Package Sharpbrake.Client -Version 3.2.1
 ```
 
 ```
-PM> Install-Package Sharpbrake.Http.Module -Version 1.2.0
+PM> Install-Package Sharpbrake.Http.Module -Version 1.2.1
 ```
 
 Examples
