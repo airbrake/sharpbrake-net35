@@ -17,11 +17,11 @@ namespace Sharpbrake.Client.Tests
         }
 
         [Fact]
-        public void Version_ShouldReturnThreeZeroZero()
+        public void Version_ShouldReturnAssemblyVersion()
         {
             var notifierInfo = new NotifierInfo();
 
-            Assert.True(notifierInfo.Version.Equals("3.1.1"));
+            Assert.True(notifierInfo.Version.Equals("3.2.0"));
         }
 
         [Fact]
@@ -29,7 +29,7 @@ namespace Sharpbrake.Client.Tests
         {
             var notifierInfo = new NotifierInfo();
 
-            Assert.True(notifierInfo.Url.Equals("https://github.com/airbrake/sharpbrake"));
+            Assert.True(notifierInfo.Url.Equals("https://github.com/airbrake/sharpbrake-net35"));
         }
     }
 }

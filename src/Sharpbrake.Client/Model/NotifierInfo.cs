@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Globalization;
+using Newtonsoft.Json;
 
 namespace Sharpbrake.Client.Model
 {
@@ -23,16 +24,21 @@ namespace Sharpbrake.Client.Model
         [JsonProperty("version")]
         public string Version
         {
-            get { return "3.1.1"; }
+            get
+            {
+                var version = typeof(NotifierInfo).Assembly.GetName().Version;
+                // in the Version class Microsoft uses the next versioning schema: major.minor[.build[.revision]]
+                return string.Format(CultureInfo.InvariantCulture, "{0}.{1}.{2}", version.Major, version.Minor, version.Build);
+            }
         }
 
         /// <summary>
-        /// An URL at which more information can be obtained concerning the notifier client.
+        /// A URL at which more information can be obtained concerning the notifier client.
         /// </summary>
         [JsonProperty("url")]
         public string Url
         {
-            get { return "https://github.com/airbrake/sharpbrake"; }
+            get { return "https://github.com/airbrake/sharpbrake-net35"; }
         }
     }
 }
