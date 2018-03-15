@@ -53,7 +53,7 @@ Task("Clean")
 Task("Restore-Packages")
     .Does(() =>
 {
-    var nugetCmd = MakeAbsolute(new FilePath("tools/NuGet.CommandLine/tools/NuGet.exe"));
+    var nugetCmd = MakeAbsolute(new FilePath("tools/NuGet.CommandLine.4.1.0/tools/NuGet.exe"));
     var sln = MakeAbsolute(new FilePath("./Sharpbrake.NET35.sln"));
 
     var packageConfigs = GetFiles("./src/**/packages.config");
@@ -108,7 +108,7 @@ Task("Run-Unit-Tests")
 
     var workingDirectory = MakeAbsolute(new DirectoryPath("./test/Sharpbrake.Client.Tests")).FullPath;
 
-    var xunitConsole = GetFiles("tools/xunit.runner.console/tools/xunit.console.exe")
+    var xunitConsole = GetFiles("tools/xunit.runner.console.2.1.0/tools/xunit.console.exe")
         .OrderByDescending(file => file.FullPath)
         .FirstOrDefault();
 
@@ -180,7 +180,7 @@ Task("Create-Packages")
     .Does(() =>
 {
     var projects = GetFiles("./src/**/*.csproj");
-    var nugetCmd = MakeAbsolute(new FilePath("tools/NuGet.CommandLine/tools/NuGet.exe"));
+    var nugetCmd = MakeAbsolute(new FilePath("tools/NuGet.CommandLine.4.1.0/tools/NuGet.exe"));
 
     foreach (var project in projects)
     {
